@@ -1,5 +1,7 @@
 # Docker with ansible
 
+Inspired by: https://github.com/willhallonline/docker-ansible
+
 An "ansible" user is created inside the container and used to execute commands.
 Change the "/home/user" path with your local environment.
 
