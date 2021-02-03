@@ -1,0 +1,43 @@
+FROM debian:buster-slim
+
+ENV UID=1000
+ENV GID=1000
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
+    apt-get install -y \
+        python3-pip \
+        sshpass \
+        git \
+        openssh-client \
+        openssl \
+        ca-certificates \
+        curl \
+        python3 \      
+        rsync \
+        git \
+        zip \
+        unzip \
+        bash && \        
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get clean
+    
+RUN pip3 install --upgrade pip cffi && \
+    pip install ansible==2.8.17 && \
+    pip install mitogen ansible-lint jmespath && \
+    pip install --upgrade pywinrm && \
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.1.22.zip" -o "awscliv2.zip" && \
+    unzip awscliv2.zip && \
+    ./aws/install && \
+    rm awscliv2.zip
+
+RUN mkdir /ansible && \
+    mkdir -p /etc/ansible && \
+    echo 'localhost' > /etc/ansible/hosts && \
+    addgroup --gid "${GID}" ansible && \
+    adduser --uid "${UID}" --gid "${GID}" ansible
+
+WORKDIR /ansible
+
+USER ansible
+
+CMD [ "ansible-playbook", "--version" ]
