@@ -32,3 +32,9 @@ If you need to execute aws cli commands, and you want to load local aws profiles
 ```console
 ... --mount type=bind,source=/home/user/.aws,target=/home/ansible/.aws ...
 ```
+
+## Share the ssh agent socket with the container
+
+```console
+... --volume $SSH_AUTH_SOCK:/ssh-agent --env SSH_AUTH_SOCK=/ssh-agent ...
+```
