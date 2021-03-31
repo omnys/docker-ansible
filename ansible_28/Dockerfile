@@ -19,7 +19,8 @@ RUN apk --no-cache add \
         git \
         zip \
         unzip \
-        bash && \
+        bash \
+        vim && \
     apk --no-cache add --virtual build-dependencies \
         python3-dev \
         libffi-dev \
