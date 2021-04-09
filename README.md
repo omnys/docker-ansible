@@ -21,7 +21,7 @@ docker run  --rm -it \
 docker run  --rm -it \
     --mount type=bind,source="$(pwd)",target=/ansible \
     --mount type=bind,source=/home/user/.ssh,target=/home/ansible/.ssh \
-    omnys/ansible:2.8.17 \    
+    omnys/ansible:2.8.17.3 \    
     ansible-playbook playbook.yml
 ```
 
