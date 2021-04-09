@@ -25,6 +25,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
 RUN pip3 install --upgrade pip cffi && \
     pip install ansible==2.8.17 && \
     pip install mitogen ansible-lint jmespath && \
+    pip install boto3 botocore && \
     pip install --upgrade pywinrm && \
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.1.22.zip" -o "awscliv2.zip" && \
     unzip awscliv2.zip && \

@@ -29,6 +29,7 @@ RUN apk --no-cache add \
     pip3 install --upgrade pip cffi && \
     pip3 install ansible==2.8.17 && \
     pip3 install mitogen ansible-lint jmespath && \
+    pip3 install boto3 botocore && \
     pip3 install --upgrade pywinrm && \
     apk del build-dependencies && \
     rm -rf /var/cache/apk/*
